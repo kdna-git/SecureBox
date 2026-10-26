@@ -24,6 +24,13 @@ dotnet build SecureBox.Android -t:Install
 dotnet test
 ```
 
+The README screenshots in `docs/screenshots/` are rendered by `SecureBox.UiTest/Screenshots.cs`
+on the headless platform with demo data. Those tests are skipped unless the output folder is set:
+
+```bash
+SECUREBOX_SCREENSHOTS=docs/screenshots dotnet test SecureBox.UiTest
+```
+
 Tests run on Microsoft.Testing.Platform (`global.json`, `dotnet.config`). Package versions are
 managed centrally in `Directory.Packages.props`; shared build properties live in
 `Directory.Build.props`.

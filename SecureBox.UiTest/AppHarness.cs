@@ -50,14 +50,23 @@ internal sealed class AppHarness : IDisposable
         Window = window;
     }
 
-    public static async Task<AppHarness> StartAsync(DataViewMode dataView = DataViewMode.TreeView)
+    /// <param name="dataView">The view mode of the secrets</param>
+    /// <param name="userId">
+    /// The user to log in. Its previous vault is removed first. A new user is created when null
+    /// </param>
+    public static async Task<AppHarness> StartAsync(
+        DataViewMode dataView = DataViewMode.TreeView,
+        string? userId = null
+    )
     {
         VaultConfig.Instance.DataView = dataView;
         VaultConfig.Instance.MosaicColumns = 4;
 
         // A user per test, so that the favorites of one test never leak into another
-        string userId = $"user{Guid.NewGuid():N}"[..12];
+        userId ??= $"user{Guid.NewGuid():N}"[..12];
         string userFolder = Path.Combine(VaultConfig.Instance.Vault, userId);
+        if (Directory.Exists(userFolder))
+            Directory.Delete(userFolder, true);
 
         // The views only need a key that matches the one used to encrypt the
         // items, so the slow password derivation of a real sign up is skipped

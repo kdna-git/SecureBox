@@ -4,6 +4,8 @@ An encrypted vault for your passwords, notes and files. Everything you put in Se
 encrypted on your device with a key derived from your password, and only you can open it.
 Optionally, you can keep an encrypted copy in the cloud and sync it between devices.
 
+![Secrets](docs/screenshots/secrets-tree.png)
+
 > [!NOTE]
 > **About this README.** This guide was written by AI (Claude).
 > **I have only tested the app on Windows and Android.** It also builds for macOS, Linux, iOS and
@@ -48,6 +50,8 @@ dotnet build SecureBox.Android -t:Install
 
 ## How it works
 
+![Login](docs/screenshots/login.png)
+
 1. **Sign up** with a user name and a password. This creates your user on this device.
 2. **Log in** with the same user name and password every time you open the app.
 3. Press **Add** to create a secret or encrypt a file, and pick the folder it goes in.
@@ -60,6 +64,8 @@ dotnet build SecureBox.Android -t:Install
 
 ### Creating a secret
 
+![Create secret](docs/screenshots/create-secret.png)
+
 | Type | Fields | Notes |
 |---|---|---|
 | **Secret** | Name, Secret, Folder, URL, User, Other data | For passwords, PINs, notes… |
@@ -68,13 +74,44 @@ dotnet build SecureBox.Android -t:Install
 **Compress** makes large text-like files (documents, logs) smaller in the vault. It does little for
 files that are already compressed, such as photos or ZIP files.
 
+### Opening a secret
+
+![Open secret](docs/screenshots/open-secret.png)
+
+Text secrets show their fields, which you can copy. Files show their original name and an
+**Extract** button that saves a decrypted copy wherever you choose.
+
 ## The screens
 
-| Screen | What it is for |
-|---|---|
-| **Secrets** | All your secrets and folders. Add, remove, open, and upload/download/sync with the cloud. |
-| **Favorites** | Only the secrets and folders you starred. |
-| **Settings** | Vault location, theme, view mode (tree or mosaic), mosaic columns and the cloud account. |
+### Secrets
+
+All your secrets and folders. Add, remove, open, and upload/download/sync with the cloud. Choose
+between a **tree** with path and size (shown at the top of this page) or a **mosaic** you browse
+folder by folder:
+
+![Secrets as a mosaic](docs/screenshots/secrets-mosaic.png)
+
+### Favorites
+
+Only the secrets and folders you starred. Click the star on any item to add or remove it.
+
+![Favorites](docs/screenshots/favorites.png)
+
+### Settings
+
+Vault location, theme, view mode, mosaic columns and the cloud account.
+
+![Settings](docs/screenshots/settings.png)
+
+### Light theme
+
+![Light theme](docs/screenshots/light-theme.png)
+
+### On a phone
+
+On Android the side menu moves behind the ☰ button at the top.
+
+<img src="docs/screenshots/phone.png" alt="SecureBox on a phone" width="260">
 
 ## Cloud copy
 
