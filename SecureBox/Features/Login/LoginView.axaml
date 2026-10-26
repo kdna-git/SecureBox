@@ -1,0 +1,100 @@
+<UserControl
+    x:Class="SecureBox.Views.LoginView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:viewModels="clr-namespace:SecureBox.ViewModels"
+    x:DataType="viewModels:LoginViewModel">
+
+    <!--  Control resources  -->
+
+    <UserControl.KeyBindings>
+        <KeyBinding Command="{Binding LoginCommand}" Gesture="Enter" />
+    </UserControl.KeyBindings>
+
+    <Grid
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        RowDefinitions="auto,auto,auto,auto,auto">
+
+        <!--  Header  -->
+
+        <TextBlock
+            Grid.Row="0"
+            Margin="0,0,0,20"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Classes="Form Heading"
+            Text="Login" />
+
+        <!--  Username  -->
+
+        <StackPanel
+            Grid.Row="1"
+            Margin="0,0,0,10"
+            HorizontalAlignment="Center"
+            Orientation="Vertical">
+            <TextBlock
+                Margin="4,0,0,4"
+                HorizontalAlignment="Left"
+                Classes="Form Label"
+                Text="Username" />
+            <TextBox
+                HorizontalAlignment="Center"
+                Classes="Form Field"
+                Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <!--  Password  -->
+
+        <StackPanel
+            Grid.Row="2"
+            Margin="0,0,0,20"
+            HorizontalAlignment="Center"
+            Orientation="Vertical">
+            <TextBlock
+                Margin="4,0,0,4"
+                HorizontalAlignment="Left"
+                Classes="Form Label"
+                Text="Password" />
+            <TextBox
+                HorizontalAlignment="Center"
+                Classes="Form Field"
+                PasswordChar="*"
+                Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <!--  Buttons  -->
+
+        <StackPanel
+            Grid.Row="3"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <Button
+                MinWidth="94"
+                Margin="5"
+                HorizontalAlignment="Left"
+                Classes="Form Submit"
+                Command="{Binding LoginCommand}"
+                Content="Login" />
+            <Button
+                MinWidth="94"
+                Margin="5"
+                HorizontalAlignment="Right"
+                Classes="Form Cancel"
+                Command="{Binding SignUpCommand}"
+                Content="Sign up" />
+        </StackPanel>
+
+        <!--  Error message  -->
+
+        <TextBlock
+            Grid.Row="4"
+            HorizontalAlignment="Center"
+            Classes="Form Label"
+            Foreground="{DynamicResource Error}"
+            IsVisible="{ReflectionBinding HasErrorMessage}"
+            Text="{Binding ErrorMessage}" />
+
+    </Grid>
+
+</UserControl>

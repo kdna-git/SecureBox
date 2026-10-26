@@ -1,0 +1,22 @@
+<UserControl
+    x:Class="SecureBox.Views.FavoritesView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:components="using:SecureBox.Views.Components"
+    xmlns:customTreeView="using:SecureBox.Components.TreeViewControl"
+    xmlns:viewModels="using:SecureBox.ViewModels"
+    x:DataType="viewModels:FavoritesViewModel">
+
+    <Grid RowDefinitions="auto,*">
+        <components:ControlBar Grid.Row="0" Margin="8,0" />
+
+        <!--  Content, shown as a tree or as a mosaic depending on the settings  -->
+        <customTreeView:TreeViewControl
+            Grid.Row="1"
+            BindableSelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+            IsVisible="{Binding IsTreeView}"
+            ItemsSource="{Binding AllItems}"
+            UseFavoriteDepth="True" />
+        <components:MosaicView Grid.Row="1" IsVisible="{Binding IsMosaicView}" />
+    </Grid>
+</UserControl>

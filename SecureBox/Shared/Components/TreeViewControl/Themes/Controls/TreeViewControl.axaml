@@ -1,0 +1,86 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SecureBox.Components.TreeViewControl">
+
+    <ControlTheme x:Key="{x:Type local:TreeViewControl}" TargetType="local:TreeViewControl">
+        <Setter Property="Background" Value="Transparent" />
+
+        <Setter Property="Template">
+            <ControlTemplate TargetType="{x:Type local:TreeViewControl}">
+                <ScrollViewer
+                    Classes="NoScrollButtonsScrollViewer"
+                    HorizontalScrollBarVisibility="Auto"
+                    VerticalScrollBarVisibility="Disabled">
+
+                    <Grid
+                        MaxWidth="{TemplateBinding Width}"
+                        Margin="12,0,4,12"
+                        HorizontalAlignment="Stretch"
+                        Background="{TemplateBinding Background}"
+                        RowDefinitions="auto,*">
+
+                        <!--  Same columns as the rows, so that the separators line up  -->
+                        <Grid Grid.Row="0" ColumnDefinitions="3*,3*,*">
+                            <!--  Node Name Header  -->
+                            <Border
+                                Grid.Column="0"
+                                Padding="6,10"
+                                BorderBrush="{DynamicResource OutlineVariant}"
+                                BorderThickness="0,0,1,1">
+                                <TextBlock
+                                    Grid.Column="0"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource OnSurface}"
+                                    Text="Name" />
+                            </Border>
+
+                            <!--  Path Header  -->
+                            <Border
+                                Grid.Column="1"
+                                Padding="6,10"
+                                BorderBrush="{DynamicResource OutlineVariant}"
+                                BorderThickness="0,0,1,1">
+                                <TextBlock
+                                    Grid.Column="0"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource OnSurface}"
+                                    Text="Path" />
+                            </Border>
+
+                            <!--  Size Header  -->
+                            <Border
+                                Grid.Column="2"
+                                Padding="6,10"
+                                BorderBrush="{DynamicResource OutlineVariant}"
+                                BorderThickness="0,0,0,1">
+                                <TextBlock
+                                    Grid.Column="0"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource OnSurface}"
+                                    Text="Size" />
+                            </Border>
+                        </Grid>
+
+
+                        <!--  TreeView  -->
+
+                        <ScrollViewer
+                            Grid.Row="1"
+                            Classes="NoScrollButtonsScrollViewer"
+                            HorizontalScrollBarVisibility="Auto">
+                            <Grid>
+                                <local:BackgroundStackPanel
+                                    VerticalAlignment="Top"
+                                    EvenRowBrush="{DynamicResource SurfaceVariant}"
+                                    ItemHeight="{Binding Bounds.Height, ElementName=Items}"
+                                    OddRowBrush="{DynamicResource Surface}" />
+                                <ItemsPresenter x:Name="Items" VerticalAlignment="Top" />
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                </ScrollViewer>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

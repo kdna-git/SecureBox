@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" />
+    <PackageReference Include="Avalonia.Themes.Fluent" />
+    <PackageReference Include="Avalonia.Fonts.Inter" />
+    <PackageReference Include="AvaloniaUI.DiagnosticsSupport">
+      <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+      <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="FirebaseAuthentication.net" />
+    <PackageReference Include="FluentIcons.Avalonia" />
+    <PackageReference Include="Material.Icons.Avalonia" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MVVM.Core\MVVM.Core.csproj" />
+    <ProjectReference Include="..\SecureBox.Domain\SecureBox.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="SecureBox.Test" />
+    <InternalsVisibleTo Include="SecureBox.UiTest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Features\Secrets\SecretsView.axaml.cs">
+      <DependentUpon>SecretsView.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,172 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!--
+        Base button style used throughout the application.
+        Provides consistent appearance, sizing, interaction states, and template behavior.
+    -->
+    <Style Selector="Button">
+        <Setter Property="Background" Value="{DynamicResource Surface}" />
+        <Setter Property="Foreground" Value="{DynamicResource OnSurface}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Outline}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ButtonCornerRadius}" />
+        <Setter Property="FontWeight" Value="{DynamicResource FontWeightMedium}" />
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeBody}" />
+        <Setter Property="Cursor" Value="Hand" />
+
+        <!-- Custom button template used to apply the configured appearance and content alignment. -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Padding="{TemplateBinding Padding}">
+                    <ContentPresenter
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Button interaction states. -->
+        <Style Selector="^:pointerover">
+            <Setter Property="Opacity" Value="0.9" />
+        </Style>
+
+        <Style Selector="^:pressed">
+            <Setter Property="RenderTransform" Value="scale(0.95)" />
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="0.5" />
+        </Style>
+    </Style>
+
+    <!-- Primary button style for prominent actions. -->
+    <Style Selector="Button.Primary">
+        <Setter Property="Background" Value="{DynamicResource Accent}" />
+        <Setter Property="Foreground" Value="{DynamicResource OnAccent}" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+
+    <!-- Outlined button style for secondary actions. -->
+    <Style Selector="Button.Outline">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource Primary}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Primary}" />
+    </Style>
+
+    <!-- Text button style for low-emphasis actions. -->
+    <Style Selector="Button.Text">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource Primary}" />
+        <Setter Property="BorderThickness" Value="0" />
+
+        <Style Selector="^:pointerover">
+            <Setter Property="Opacity" Value="0.8" />
+        </Style>
+    </Style>
+
+    <!--
+        Base text box style used for editable text input.
+        Provides consistent appearance, spacing, and focus behavior.
+    -->
+    <Style Selector="TextBox">
+        <Setter Property="Background" Value="{DynamicResource Surface}" />
+        <Setter Property="Foreground" Value="{DynamicResource OnSurface}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Outline}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ContentCornerRadius}" />
+        <Setter Property="MinHeight" Value="36" />
+        <!--<Setter Property="Padding" Value="8,8" />-->
+        <Setter Property="CaretBrush" Value="{DynamicResource Primary}" />
+
+        <Style Selector="^:pointerover">
+            <Setter Property="BorderBrush" Value="{DynamicResource Primary}" />
+        </Style>
+
+        <Style Selector="^:focus">
+            <Setter Property="BorderBrush" Value="{DynamicResource Primary}" />
+        </Style>
+    </Style>
+
+    <!-- Base text style and semantic text variants. -->
+    <Style Selector="TextBlock">
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeBody}" />
+        <Setter Property="Foreground" Value="{DynamicResource OnBackground}" />
+    </Style>
+
+    <Style Selector="TextBlock.Heading">
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeH3}" />
+        <Setter Property="FontWeight" Value="{DynamicResource FontWeightBold}" />
+    </Style>
+
+    <Style Selector="TextBlock.Body">
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeBody}" />
+    </Style>
+
+    <Style Selector="TextBlock.Caption">
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeCaption}" />
+        <Setter Property="Foreground" Value="{DynamicResource OnSurfaceVariant}" />
+    </Style>
+
+    <Style Selector="TextBlock.Label">
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeCaption}" />
+        <Setter Property="Foreground" Value="{DynamicResource OnSurfaceVariant}" />
+    </Style>
+
+    <!-- Selection controls with consistent borders and interaction states. -->
+    <Style Selector="CheckBox">
+        <Setter Property="BorderBrush" Value="{DynamicResource Outline}" />
+        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="Foreground" Value="{DynamicResource OnSurface}" />
+
+        <Style Selector="^:pointerover">
+            <Setter Property="BorderBrush" Value="{DynamicResource Primary}" />
+        </Style>
+    </Style>
+
+    <Style Selector="RadioButton">
+        <Setter Property="BorderBrush" Value="{DynamicResource Outline}" />
+        <Setter Property="Foreground" Value="{DynamicResource OnSurface}" />
+
+        <Style Selector="^:pointerover">
+            <Setter Property="BorderBrush" Value="{DynamicResource Primary}" />
+        </Style>
+    </Style>
+
+    <!-- Dropdown control styled to match the application's input components. -->
+    <Style Selector="ComboBox">
+        <Setter Property="Background" Value="{DynamicResource Surface}" />
+        <Setter Property="Foreground" Value="{DynamicResource OnSurface}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Outline}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ContentCornerRadius}" />
+        <Setter Property="Padding" Value="12,8" />
+
+        <Style Selector="^:pointerover">
+            <Setter Property="BorderBrush" Value="{DynamicResource Primary}" />
+        </Style>
+    </Style>
+
+    <!-- Numeric input control using the standard application input styling. -->
+    <Style Selector="NumericUpDown">
+        <Setter Property="Background" Value="{DynamicResource Surface}" />
+        <Setter Property="Foreground" Value="{DynamicResource OnSurface}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Outline}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ContentCornerRadius}" />
+        <Setter Property="Padding" Value="12,8" />
+    </Style>
+
+    <!-- Date selection control using the standard application input styling. -->
+    <Style Selector="DatePicker">
+        <Setter Property="Background" Value="{DynamicResource Surface}" />
+        <Setter Property="Foreground" Value="{DynamicResource OnSurface}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Outline}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ContentCornerRadius}" />
+    </Style>
+</Styles>

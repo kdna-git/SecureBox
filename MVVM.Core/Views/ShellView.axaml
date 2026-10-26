@@ -1,0 +1,107 @@
+<UserControl
+    x:Class="MVVM.Core.Views.ShellView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:ModalControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:extensions="clr-namespace:MVVM.Core.Extensions"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:MVVM.Core.Views"
+    xmlns:vm="using:MVVM.Core.ViewModels"
+    d:DesignHeight="800"
+    d:DesignWidth="400"
+    x:DataType="vm:MainViewModel"
+    mc:Ignorable="d">
+
+    <Grid ColumnDefinitions="Auto,*" RowDefinitions="56,*">
+
+        <!--
+            Mobile header containing the navigation drawer toggle
+            and the current application title.
+        -->
+        <Border
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            Background="{DynamicResource Background}">
+            <Grid ColumnDefinitions="Auto,*">
+                <Button
+                    Grid.Column="0"
+                    Width="40"
+                    Height="40"
+                    extensions:ExtensionIcons.Icon="Navigation"
+                    extensions:ExtensionIcons.IconSize="22"
+                    Background="Transparent"
+                    Classes="Nav Item"
+                    Command="{Binding ToggleNavigationDrawerCommand}"
+                    Foreground="{DynamicResource OnSurface}" />
+
+                <TextBlock
+                    Grid.Column="1"
+                    Margin="12,0,0,0"
+                    VerticalAlignment="Center"
+                    FontSize="{DynamicResource FontSizeH4}"
+                    FontWeight="{DynamicResource FontWeightMedium}"
+                    Foreground="{DynamicResource OnSurface}"
+                    Text="{Binding Title}" />
+            </Grid>
+        </Border>
+
+        <!-- Main application content displayed by the navigation store. -->
+        <Border
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Background="{DynamicResource Surface}"
+            ClipToBounds="True">
+            <views:MainView />
+        </Border>
+
+        <!-- Modal overlay displayed above the main application content. -->
+        <controls:Modal
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            BackgroundClickCommand="{Binding CloseModalCommand}"
+            ContentCornerRadius="{DynamicResource DefaultCornerRadius}"
+            IsOpen="{Binding IsModalOpen}">
+            <ContentControl MinWidth="200" Content="{Binding CurrentModalViewModel}" />
+        </controls:Modal>
+
+        <!--
+            Semi-transparent backdrop displayed while the navigation drawer
+            is open. It also captures pointer presses outside the drawer.
+        -->
+        <Border
+            Grid.RowSpan="2"
+            Grid.Column="1"
+            Background="#80000000"
+            IsHitTestVisible="{Binding IsNavigationDrawerOpen}"
+            Opacity="{Binding BackdropOpacity}"
+            PointerPressed="OnBackdropPointerPressed">
+            <Border.Transitions>
+                <Transitions>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.25" />
+                </Transitions>
+            </Border.Transitions>
+        </Border>
+
+        <!--
+            Collapsible navigation drawer. Its width is controlled by the
+            MainViewModel and animated when opening or closing.
+        -->
+        <Border
+            Grid.Row="1"
+            Grid.Column="0"
+            Width="{Binding SidebarWidth}"
+            HorizontalAlignment="Left"
+            Background="{DynamicResource Background}"
+            ClipToBounds="True">
+            <Border.Transitions>
+                <Transitions>
+                    <DoubleTransition Property="Width" Duration="0:0:0.25" />
+                </Transitions>
+            </Border.Transitions>
+            <ContentControl Content="{Binding NavigationBarViewModel}" />
+        </Border>
+
+    </Grid>
+
+</UserControl>

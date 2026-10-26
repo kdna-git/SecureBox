@@ -1,0 +1,17 @@
+﻿<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Project Path="ModalControl/ModalControl.csproj" />
+  <Project Path="MVVM.Core/MVVM.Core.csproj" />
+  <Project Path="SecureBox.Android/SecureBox.Android.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+  <Project Path="SecureBox.Browser/SecureBox.Browser.csproj" />
+  <Project Path="SecureBox.Desktop/SecureBox.Desktop.csproj" />
+  <Project Path="SecureBox.Domain/SecureBox.Domain.csproj" />
+  <Project Path="SecureBox.iOS/SecureBox.iOS.csproj" />
+  <Project Path="SecureBox.Test/SecureBox.Test.csproj" />
+  <Project Path="SecureBox.UiTest/SecureBox.UiTest.csproj" />
+  <Project Path="SecureBox/SecureBox.csproj" />
+</Solution>

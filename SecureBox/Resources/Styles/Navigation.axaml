@@ -1,0 +1,126 @@
+<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:extensions="using:MVVM.Core.Extensions"
+    xmlns:ic="using:FluentIcons.Avalonia">
+
+    <!--
+        Navigation radio button used for selectable navigation items.
+        The template displays an icon and content with visual states for
+        hover and selection.
+    -->
+    <Style Selector="RadioButton.Nav.Item">
+        <Setter Property="Foreground" Value="{DynamicResource OnSurface}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Margin" Value="4,0,4,0" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Cursor" Value="Hand" />
+
+        <!-- Custom template for navigation items with an icon and label. -->
+        <Setter Property="Template">
+            <ControlTemplate TargetType="RadioButton">
+                <Border
+                    Margin="4"
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="4">
+                    <StackPanel Orientation="Horizontal">
+                        <ic:SymbolIcon
+                            x:Name="PART_Icon"
+                            Opacity="0.38"
+                            Margin="{TemplateBinding Padding}"
+                            FontSize="{TemplateBinding (extensions:ExtensionIcons.IconSize)}"
+                            Foreground="{TemplateBinding Foreground}"
+                            Symbol="{TemplateBinding (extensions:ExtensionIcons.Icon)}" />
+                        <ContentPresenter
+                            x:Name="PART_ContentPresenter"
+                            Opacity="0.38"
+                            Margin="8,0,0,2"
+                            VerticalAlignment="Center"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Foreground="{TemplateBinding Foreground}" />
+                    </StackPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Highlight the navigation item when the pointer is over it. -->
+        <Style Selector="^:pointerover /template/ Border">
+            <Setter Property="Background" Value="{DynamicResource SurfaceVariant}" />
+        </Style>
+
+        <!-- Highlight the selected navigation item. -->
+        <Style Selector="^:checked /template/ Border">
+            <Setter Property="Background" Value="{DynamicResource PrimaryContainer}" />
+        </Style>
+
+        <!-- Restore full opacity for the icon and label when selected. -->
+        <Style Selector="^:checked /template/ ic|SymbolIcon#PART_Icon">
+            <Setter Property="Opacity" Value="1.0" />
+        </Style>
+
+        <Style Selector="^:checked /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Opacity" Value="1.0" />
+        </Style>
+
+        <!-- Emphasize the selected navigation item. -->
+        <Style Selector="^:checked">
+            <Setter Property="Foreground" Value="{DynamicResource OnSurfaceVariant}" />
+            <Setter Property="FontWeight" Value="Medium" />
+        </Style>
+    </Style>
+
+    <!--
+        Navigation button used for non-selectable actions.
+        Displays an icon and provides hover and pressed visual states.
+    -->
+    <Style Selector="Button.Nav.Item">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource OnSurface}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Margin" Value="4,0,4,0" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Cursor" Value="Hand" />
+
+        <!-- Custom template displaying the button's navigation icon. -->
+        <Setter Property="Template">
+            <ControlTemplate TargetType="Button">
+                <Border
+                    Margin="4"
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="4">
+                    <ic:SymbolIcon
+                        Margin="{TemplateBinding Padding}"
+                        FontSize="{TemplateBinding (extensions:ExtensionIcons.IconSize)}"
+                        Foreground="{TemplateBinding Foreground}"
+                        Symbol="{TemplateBinding (extensions:ExtensionIcons.Icon)}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Highlight the button when hovered or pressed. -->
+        <Style Selector="^:pointerover /template/ Border">
+            <Setter Property="Background" Value="{DynamicResource SurfaceVariant}" />
+        </Style>
+
+        <Style Selector="^:pressed /template/ Border">
+            <Setter Property="Background" Value="{DynamicResource SurfaceVariant}" />
+        </Style>
+    </Style>
+
+    <!--
+        Navigation rail containing the navigation items.
+        Expands on pointer hover to reveal the full navigation area.
+    -->
+    <Style Selector="Border.Nav.Rail">
+        <Setter Property="Width" Value="48" />
+        <Setter Property="Background" Value="{DynamicResource SurfaceVariant}" />
+
+        <Style Selector="^:pointerover">
+            <Setter Property="Width" Value="144" />
+        </Style>
+    </Style>
+</Styles>

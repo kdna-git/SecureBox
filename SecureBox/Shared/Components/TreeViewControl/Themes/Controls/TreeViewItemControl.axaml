@@ -1,0 +1,168 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cnvts="using:SecureBox.Components.TreeViewControl.Converters"
+    xmlns:components="using:SecureBox.Components.FileIcon"
+    xmlns:ic="using:FluentIcons.Avalonia"
+    xmlns:i="using:Avalonia.Xaml.Interactivity"
+    xmlns:ia="using:Avalonia.Xaml.Interactions.Core"
+    xmlns:local="using:SecureBox.Components.TreeViewControl"
+    xmlns:viewmodels="using:SecureBox.ViewModels"
+    x:DataType="viewmodels:FileItemViewModel">
+
+    <ControlTheme x:Key="{x:Type local:TreeViewItemControl}" TargetType="local:TreeViewItemControl">
+        <ControlTheme.Resources>
+            <cnvts:WidthMinusMarginConverter x:Key="WidthMinusMarginConverter" />
+        </ControlTheme.Resources>
+
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="ItemsSource" Value="{Binding SubItems}" />
+        <Setter Property="Type" Value="{Binding Type}" />
+
+        <Setter Property="Template">
+            <ControlTemplate TargetType="local:TreeViewItemControl">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
+                    <StackPanel>
+
+                        <!--  Grid principal  -->
+                        <Grid
+                            x:Name="Item"
+                            Height="30"
+                            Background="{TemplateBinding Background}"
+                            ColumnDefinitions="3*,3*,*"
+                            IsVisible="{Binding IsVisible}">
+
+                            <!--  Node Name  -->
+                            <Border
+                                x:Name="BorderName"
+                                Grid.Column="0"
+                                BorderBrush="{DynamicResource OutlineVariant}"
+                                BorderThickness="0,0,1,0">
+                                <!--  The favorites view indents items relative to the favorite that contains them  -->
+                                <Border.Margin>
+                                    <MultiBinding Converter="{cnvts:DepthConverter}">
+                                        <Binding Path="Depth" />
+                                        <Binding Path="FavoriteDepth" />
+                                        <Binding Path="$parent[local:TreeViewControl].UseFavoriteDepth" />
+                                    </MultiBinding>
+                                </Border.Margin>
+
+                                <StackPanel MaxWidth="{Binding Bounds.Width, ElementName=BorderName, Converter={StaticResource WidthMinusMarginConverter}}" Orientation="Horizontal">
+
+                                    <!--  Chevron  -->
+                                    <local:ChevronSwitch
+                                        x:Name="Chevron"
+                                        Margin="6"
+                                        ChevronColor="{DynamicResource OnSurfaceVariant}"
+                                        IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsExpanded}" />
+
+                                    <!--  File Icon  -->
+                                    <components:FileIcon
+                                        Margin="4"
+                                        Extension="{Binding Extension}"
+                                        Type="{Binding Type}" />
+
+                                    <!--  Favourite Button  -->
+                                    <Button
+                                        HorizontalAlignment="Right"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        Classes.Favorite="{Binding IsFavorite}"
+                                        Command="{Binding FavoriteCommand}"
+                                        Cursor="Hand"
+                                        Foreground="{DynamicResource Primary}"
+                                        ToolTip.Tip="Favorite">
+                                        <ic:SymbolIcon
+                                            FontSize="16"
+                                            Symbol="Star" />
+                                        <Button.Styles>
+                                            <Style Selector="Button.Favorite ic|SymbolIcon">
+                                                <Setter Property="IconVariant" Value="Filled" />
+                                            </Style>
+                                            <Style Selector="Button">
+                                                <Setter Property="Template">
+                                                    <ControlTemplate TargetType="Button">
+                                                        <ContentPresenter
+                                                            HorizontalAlignment="Center"
+                                                            VerticalAlignment="Center"
+                                                            Background="Transparent"
+                                                            Content="{TemplateBinding Content}" />
+                                                    </ControlTemplate>
+                                                </Setter>
+                                            </Style>
+                                        </Button.Styles>
+                                    </Button>
+
+                                    <!--  Node Name Text  -->
+                                    <TextBlock
+                                        Margin="6"
+                                        Foreground="{DynamicResource OnSurface}"
+                                        Text="{Binding Name}"
+                                        TextTrimming="CharacterEllipsis" />
+                                </StackPanel>
+                            </Border>
+
+                            <!--  Path  -->
+                            <Border
+                                x:Name="BorderPath"
+                                Grid.Column="1"
+                                BorderBrush="{DynamicResource OutlineVariant}"
+                                BorderThickness="0,0,1,0">
+                                <TextBlock
+                                    MaxWidth="{Binding Bounds.Width, ElementName=BorderPath, Converter={StaticResource WidthMinusMarginConverter}}"
+                                    Margin="6"
+                                    Foreground="{DynamicResource OnSurface}"
+                                    Text="{Binding RelativePath}"
+                                    TextTrimming="CharacterEllipsis" />
+                            </Border>
+
+                            <!--  Size  -->
+                            <TextBlock
+                                Grid.Column="2"
+                                Margin="6,6,14,6"
+                                HorizontalAlignment="Right"
+                                Foreground="{DynamicResource OnSurface}"
+                                Text="{Binding Size, Converter={cnvts:SizeConverter}}" />
+                        </Grid>
+
+                        <!--  Subitems  -->
+                        <ItemsPresenter x:Name="Items" IsVisible="{TemplateBinding IsExpanded}" />
+
+                    </StackPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!--  IsMouseOver  -->
+        <Style Selector="^:pointerover /template/ Grid#Item">
+            <Setter Property="Background" Value="{DynamicResource PrimaryContainer}" />
+        </Style>
+        <Style Selector="^:pointerover /template/ Grid#Item TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource OnSurface}" />
+        </Style>
+        <Style Selector="^:pointerover /template/ local|ChevronSwitch#Chevron">
+            <Setter Property="ChevronColor" Value="{DynamicResource OnSurface}" />
+        </Style>
+
+        <!--  IsSelected  -->
+        <Style Selector="^:selected /template/ Grid#Item">
+            <Setter Property="Background" Value="{DynamicResource SecondaryContainer}" />
+        </Style>
+        <Style Selector="^:selected /template/ Grid#Item TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource OnSurface}" />
+        </Style>
+        <Style Selector="^:selected /template/ local|ChevronSwitch#Chevron">
+            <Setter Property="ChevronColor" Value="{DynamicResource OnSurface}" />
+        </Style>
+
+        <!--  Files cannot be expanded. The chevron keeps its space so that names stay aligned  -->
+        <Style Selector="^[Type=File] /template/ local|ChevronSwitch#Chevron">
+            <Setter Property="Opacity" Value="0" />
+            <Setter Property="IsHitTestVisible" Value="False" />
+        </Style>
+
+    </ControlTheme>
+</ResourceDictionary>

@@ -1,0 +1,15 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Styles.Resources>
+
+        <!-- Standard spaces used throughout the application. -->
+        <Thickness x:Key="SpacingXS">4</Thickness>
+        <Thickness x:Key="SpacingSM">8</Thickness>
+        <Thickness x:Key="SpacingMD">16</Thickness>
+        <Thickness x:Key="SpacingLG">24</Thickness>
+        <Thickness x:Key="SpacingXL">32</Thickness>
+        <Thickness x:Key="PaddingSM">8</Thickness>
+        <Thickness x:Key="PaddingMD">16</Thickness>
+        <Thickness x:Key="PaddingLG">24</Thickness>
+
+    </Styles.Resources>
+</Styles>

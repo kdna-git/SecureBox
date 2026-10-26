@@ -1,0 +1,51 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SecureBox.Components.FileIcon">
+    <Geometry x:Key="Folder">M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z</Geometry>
+    <Geometry x:Key="File">M10.409 0c4.857 0 3.335 8 3.335 8 3.009-.745 8.256-.419 8.256 3v11.515l-4.801-4.801c.507-.782.801-1.714.801-2.714 0-2.76-2.24-5-5-5s-5 2.24-5 5 2.24 5 5 5c1.037 0 2-.316 2.799-.858l4.858 4.858h-18.657v-24h8.409zm2.591 12c1.656 0 3 1.344 3 3s-1.344 3-3 3-3-1.344-3-3 1.344-3 3-3zm1.568-11.925c2.201 1.174 5.938 4.884 7.432 6.882-1.286-.9-4.044-1.657-6.091-1.18.222-1.468-.186-4.534-1.341-5.702z</Geometry>
+    <Geometry x:Key="Code">M3,5A2,2 0 0,1 5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V5M6,6V18H10V16H8V8H10V6H6M16,16H14V18H18V6H14V8H16V16Z</Geometry>
+    <Geometry x:Key="Music">M248.047,0v270.738c-13.763-4.989-28.424-8.162-43.85-8.162c-72.559,0-131.288,58.598-131.288,131.288s58.73,131.288,131.288,131.288c67.482,0,122.557-51.115,129.822-116.759h1.466V87.569h116.759V0H248.047z</Geometry>
+
+    <ControlTheme x:Key="{x:Type local:FileIcon}" TargetType="local:FileIcon">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:FileIcon">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <Path x:Name="Icon" Width="16" Height="16"
+                          Stretch="Uniform" Fill="{DynamicResource OnSurfaceVariant}" />
+                    </Border>
+                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <!-- Folder -->
+        <Style Selector="^[Type=Folder] /template/ Path#Icon">
+            <Setter Property="Data" Value="{StaticResource Folder}" />
+            <Setter Property="Fill" Value="{DynamicResource Primary}" />
+        </Style>
+
+        <!-- File -->
+        <Style Selector="^[Type=File] /template/ Path#Icon">
+            <Setter Property="Data" Value="{StaticResource File}" />
+            <Setter Property="Fill" Value="{DynamicResource OnSurfaceVariant}" />
+        </Style>
+
+        <!-- Extension .cs -->
+        <Style Selector="^[Extension=.cs] /template/ Path#Icon">
+            <Setter Property="Data" Value="{StaticResource Code}" />
+            <Setter Property="Fill" Value="{DynamicResource Secondary}" />
+        </Style>
+
+        <!-- Extension .mp3 -->
+        <Style Selector="^[Extension=.mp3] /template/ Path#Icon">
+            <Setter Property="Data" Value="{StaticResource Music}" />
+            <Setter Property="Fill" Value="{DynamicResource Tertiary}" />
+        </Style>
+
+    </ControlTheme>
+</ResourceDictionary>

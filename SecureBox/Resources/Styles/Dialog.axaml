@@ -1,0 +1,29 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Base styling shared by dialog buttons. -->
+    <Style Selector="Button.Dialog">
+        <Setter Property="Padding" Value="16,8" />
+        <Setter Property="FontWeight" Value="{DynamicResource FontWeightMedium}" />
+    </Style>
+
+    <!-- Cancel button style for dialog actions. -->
+    <Style Selector="Button.Dialog.Cancel">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource OnSurface}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Outline}" />
+    </Style>
+
+    <!-- Dialog heading text style. -->
+    <Style Selector="TextBlock.Dialog.Heading">
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeH4}" />
+        <Setter Property="FontWeight" Value="{DynamicResource FontWeightBold}" />
+        <Setter Property="Foreground" Value="{DynamicResource OnBackground}" />
+    </Style>
+
+    <!-- Dialog body text style. -->
+    <Style Selector="TextBlock.Dialog.Body">
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeBody}" />
+        <Setter Property="Foreground" Value="{DynamicResource OnSurfaceVariant}" />
+    </Style>
+</Styles>

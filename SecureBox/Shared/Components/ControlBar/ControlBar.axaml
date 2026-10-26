@@ -1,0 +1,82 @@
+<UserControl
+    x:Class="SecureBox.Views.Components.ControlBar"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ic="using:FluentIcons.Avalonia"
+    xmlns:viewModels="using:SecureBox.ViewModels"
+    x:DataType="viewModels:ItemsViewModel">
+
+    <UserControl.Styles>
+        <Style Selector="Button.Tool">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="8" />
+            <Setter Property="Margin" Value="4,0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="Button.Tool ic|SymbolIcon">
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+        <Style Selector="Button.Tool:disabled ic|SymbolIcon">
+            <Setter Property="Opacity" Value="0.38" />
+        </Style>
+    </UserControl.Styles>
+
+    <Grid ColumnDefinitions="auto,auto,*,auto,*,auto,auto,auto,auto">
+        <!--  Add Button  -->
+        <Button
+            Grid.Column="0"
+            Classes="Tool"
+            Command="{Binding AddSecretCommand}"
+            ToolTip.Tip="New secret">
+            <ic:SymbolIcon Symbol="Add" />
+        </Button>
+        <!--  Remove Button  -->
+        <Button
+            Grid.Column="1"
+            Classes="Tool"
+            Command="{Binding RemoveSecretCommand}"
+            ToolTip.Tip="Delete the selected item">
+            <ic:SymbolIcon Symbol="Subtract" />
+        </Button>
+        <!--  Filter Textbox  -->
+        <TextBox
+            Grid.Column="3"
+            Width="200"
+            Margin="4,8"
+            Text="{Binding Filter, UpdateSourceTrigger=PropertyChanged}"
+            PlaceholderText="Search" />
+        <!--  Cloud status  -->
+        <TextBlock
+            Grid.Column="5"
+            Margin="8,0"
+            VerticalAlignment="Center"
+            Classes="Caption"
+            IsVisible="{Binding CloudStatus, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+            Text="{Binding CloudStatus}" />
+        <!--  Sync Button  -->
+        <Button
+            Grid.Column="6"
+            Classes="Tool"
+            Command="{Binding SyncSecretsCommand}"
+            ToolTip.Tip="Sync with the cloud">
+            <ic:SymbolIcon Symbol="ArrowSync" />
+        </Button>
+        <!--  Upload Button  -->
+        <Button
+            Grid.Column="7"
+            Classes="Tool"
+            Command="{Binding UploadSecretsCommand}"
+            ToolTip.Tip="Upload to the cloud">
+            <ic:SymbolIcon Symbol="ArrowUpload" />
+        </Button>
+        <!--  Download Button  -->
+        <Button
+            Grid.Column="8"
+            Classes="Tool"
+            Command="{Binding DownloadSecretsCommand}"
+            ToolTip.Tip="Download from the cloud">
+            <ic:SymbolIcon Symbol="ArrowDownload" />
+        </Button>
+    </Grid>
+</UserControl>

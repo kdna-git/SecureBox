@@ -1,0 +1,44 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewModel="using:SecureBox.ViewModels"
+             x:DataType="viewModel:ItemsViewModel"
+             x:Class="SecureBox.Components.BreadCrumComponent">
+    <UserControl.Styles>
+        <Style Selector="Button.BreadCrumb">
+            <Setter Property="Foreground" Value="{DynamicResource Primary}" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
+    </UserControl.Styles>
+    <Grid>
+        <!--  BreadCrumb Navigation  -->
+        <ItemsControl ItemsSource="{Binding BreadCrumbItems}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <Button
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Command="{Binding NavigateCommand}"
+                            CommandParameter="{Binding}"
+                            Content="{Binding DisplayName}"
+                            Classes="BreadCrumb" />
+                        <TextBlock
+                            Margin="4,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Foreground="{DynamicResource Primary}"
+                            Text=" &gt; "
+                            IsVisible="{Binding !IsLast}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</UserControl>

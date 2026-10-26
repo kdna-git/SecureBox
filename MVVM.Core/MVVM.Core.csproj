@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<ItemGroup>
+	  <AvaloniaResource Include="Assets\avalonia-logo.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Avalonia" />
+		<PackageReference Include="Avalonia.Themes.Fluent" />
+		<PackageReference Include="Avalonia.Fonts.Inter" />
+		<PackageReference Include="AvaloniaUI.DiagnosticsSupport">
+			<IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+			<PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="CommunityToolkit.Mvvm" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+		<PackageReference Include="FluentIcons.Avalonia" />
+		<PackageReference Include="Material.Icons.Avalonia" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Converters\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\ModalControl\ModalControl.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\ShellView.axaml.cs">
+	    <DependentUpon>ShellView.axaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+</Project>

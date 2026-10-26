@@ -1,0 +1,262 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--
+        Design-time preview — open this file in the designer to see all styled controls.
+        Not loaded at runtime (excluded from build in .csproj).
+    -->
+
+    <Design.PreviewWith>
+        <ScrollViewer>
+            <StackPanel Orientation="Horizontal" Spacing="0">
+                <Border Background="White">
+                    <ThemeVariantScope Width="460" Margin="20" Padding="0,0,20,0" RequestedThemeVariant="Light">
+                        <StackPanel Spacing="16">
+                            <TextBlock Classes="Heading" Text="Light Theme" />
+
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Button" FontSize="10" Foreground="Gray" />
+                                <Button Content="Default" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Button.Primary" FontSize="10" Foreground="Gray" />
+                                <Button Classes="Primary" Content="Primary" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Button.Outline" FontSize="10" Foreground="Gray" />
+                                <Button Classes="Outline" Content="Outline" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Button.Text" FontSize="10" Foreground="Gray" />
+                                <Button Classes="Text" Content="Text" />
+                            </StackPanel>
+
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="TextBox" FontSize="10" Foreground="Gray" />
+                                <TextBox HorizontalAlignment="Left" Width="200" Text="Sample text" />
+                            </StackPanel>
+
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="TextBlock.Heading" FontSize="10" Foreground="Gray" />
+                                <TextBlock Classes="Heading" Text="Heading" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="TextBlock.Body" FontSize="10" Foreground="Gray" />
+                                <TextBlock Classes="Body" Text="Body text" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="TextBlock.Caption" FontSize="10" Foreground="Gray" />
+                                <TextBlock Classes="Caption" Text="Caption text" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="TextBlock.Label" FontSize="10" Foreground="Gray" />
+                                <TextBlock Classes="Label" Text="Label text" />
+                            </StackPanel>
+
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="CheckBox" FontSize="10" Foreground="Gray" />
+                                <CheckBox Content="Checkbox" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="RadioButton" FontSize="10" Foreground="Gray" />
+                                <RadioButton Content="Radio option" />
+                            </StackPanel>
+
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="ComboBox" FontSize="10" Foreground="Gray" />
+                                <ComboBox Width="200" SelectedIndex="0">
+                                    <ComboBoxItem Content="Option 1" />
+                                    <ComboBoxItem Content="Option 2" />
+                                </ComboBox>
+                            </StackPanel>
+
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="NumericUpDown" FontSize="10" Foreground="Gray" />
+                                <NumericUpDown HorizontalAlignment="Left" Width="200" Value="42" />
+                            </StackPanel>
+
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="DatePicker" FontSize="10" Foreground="Gray" />
+                                <DatePicker Width="200" />
+                            </StackPanel>
+
+                            <TextBlock Classes="Caption" Text="Form Context" FontWeight="Bold" Margin="0,8,0,0" />
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="TextBlock.Form.Heading" FontSize="10" Foreground="Gray" />
+                                <TextBlock Classes="Form Heading" Text="Form Heading" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="TextBlock.Form.Label" FontSize="10" Foreground="Gray" />
+                                <TextBlock Classes="Form Label" Text="Form Label" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="TextBox.Form.Field" FontSize="10" Foreground="Gray" />
+                                <TextBox HorizontalAlignment="Left" Classes="Form Field" Width="200" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Button.Form.Submit" FontSize="10" Foreground="Gray" />
+                                <Button Classes="Form Submit" Content="Submit" Width="100" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Button.Form.Cancel" FontSize="10" Foreground="Gray" />
+                                <Button Classes="Form Cancel" Content="Cancel" Width="100" />
+                            </StackPanel>
+
+                            <TextBlock Classes="Caption" Text="Dialog Context" FontWeight="Bold" Margin="0,8,0,0" />
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="TextBlock.Dialog.Heading" FontSize="10" Foreground="Gray" />
+                                <TextBlock Classes="Dialog Heading" Text="Dialog Title" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="TextBlock.Dialog.Body" FontSize="10" Foreground="Gray" />
+                                <TextBlock Classes="Dialog Body" Text="Dialog message body." TextWrapping="Wrap" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Button.Dialog" FontSize="10" Foreground="Gray" />
+                                <Button Classes="Dialog" Content="Default dialog button" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Button.Dialog + Button.Primary" FontSize="10" Foreground="Gray" />
+                                <Button Classes="Dialog Primary" Content="Confirm" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Button.Dialog.Cancel" FontSize="10" Foreground="Gray" />
+                                <Button Classes="Dialog Cancel" Content="Cancel" />
+                            </StackPanel>
+
+                            <TextBlock Classes="Caption" Text="Navigation Context" FontWeight="Bold" Margin="0,8,0,0" />
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="RadioButton.Nav.Item" FontSize="10" Foreground="Gray" />
+                                <RadioButton Classes="Nav Item" Content="Home" IsChecked="True" />
+                                <RadioButton Classes="Nav Item" Content="Settings" />
+                            </StackPanel>
+                        </StackPanel>
+                    </ThemeVariantScope>
+                </Border>
+
+                <Border Background="Black">
+                    <ThemeVariantScope Width="460" Margin="20" Padding="0,0,20,0" RequestedThemeVariant="Dark">
+                        <StackPanel Spacing="16" >
+                            <TextBlock Classes="Heading" Text="Dark Theme" />
+
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Button" FontSize="10" Foreground="Gray" />
+                                <Button Content="Default" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Button.Primary" FontSize="10" Foreground="Gray" />
+                                <Button Classes="Primary" Content="Primary" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Button.Outline" FontSize="10" Foreground="Gray" />
+                                <Button Classes="Outline" Content="Outline" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Button.Text" FontSize="10" Foreground="Gray" />
+                                <Button Classes="Text" Content="Text" />
+                            </StackPanel>
+
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="TextBox" FontSize="10" Foreground="Gray" />
+                                <TextBox HorizontalAlignment="Left" Width="200" Text="Sample text" />
+                            </StackPanel>
+
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="TextBlock.Heading" FontSize="10" Foreground="Gray" />
+                                <TextBlock Classes="Heading" Text="Heading" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="TextBlock.Body" FontSize="10" Foreground="Gray" />
+                                <TextBlock Classes="Body" Text="Body text" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="TextBlock.Caption" FontSize="10" Foreground="Gray" />
+                                <TextBlock Classes="Caption" Text="Caption text" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="TextBlock.Label" FontSize="10" Foreground="Gray" />
+                                <TextBlock Classes="Label" Text="Label text" />
+                            </StackPanel>
+
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="CheckBox" FontSize="10" Foreground="Gray" />
+                                <CheckBox Content="Checkbox" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="RadioButton" FontSize="10" Foreground="Gray" />
+                                <RadioButton Content="Radio option" />
+                            </StackPanel>
+
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="ComboBox" FontSize="10" Foreground="Gray" />
+                                <ComboBox Width="200" SelectedIndex="0">
+                                    <ComboBoxItem Content="Option 1" />
+                                    <ComboBoxItem Content="Option 2" />
+                                </ComboBox>
+                            </StackPanel>
+
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="NumericUpDown" FontSize="10" Foreground="Gray" />
+                                <NumericUpDown HorizontalAlignment="Left" Width="200" Value="42" />
+                            </StackPanel>
+
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="DatePicker" FontSize="10" Foreground="Gray" />
+                                <DatePicker Width="200" />
+                            </StackPanel>
+
+                            <TextBlock Classes="Caption" Text="Form Context" FontWeight="Bold" Margin="0,8,0,0" />
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="TextBlock.Form.Heading" FontSize="10" Foreground="Gray" />
+                                <TextBlock Classes="Form Heading" Text="Form Heading" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="TextBlock.Form.Label" FontSize="10" Foreground="Gray" />
+                                <TextBlock Classes="Form Label" Text="Form Label" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="TextBox.Form.Field" FontSize="10" Foreground="Gray" />
+                                <TextBox HorizontalAlignment="Left" Classes="Form Field" Width="200" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Button.Form.Submit" FontSize="10" Foreground="Gray" />
+                                <Button Classes="Form Submit" Content="Submit" Width="100" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Button.Form.Cancel" FontSize="10" Foreground="Gray" />
+                                <Button Classes="Form Cancel" Content="Cancel" Width="100" />
+                            </StackPanel>
+
+                            <TextBlock Classes="Caption" Text="Dialog Context" FontWeight="Bold" Margin="0,8,0,0" />
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="TextBlock.Dialog.Heading" FontSize="10" Foreground="Gray" />
+                                <TextBlock Classes="Dialog Heading" Text="Dialog Title" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="TextBlock.Dialog.Body" FontSize="10" Foreground="Gray" />
+                                <TextBlock Classes="Dialog Body" Text="Dialog message body." TextWrapping="Wrap" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Button.Dialog" FontSize="10" Foreground="Gray" />
+                                <Button Classes="Dialog" Content="Default dialog button" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Button.Dialog + Button.Primary" FontSize="10" Foreground="Gray" />
+                                <Button Classes="Dialog Primary" Content="Confirm" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Button.Dialog.Cancel" FontSize="10" Foreground="Gray" />
+                                <Button Classes="Dialog Cancel" Content="Cancel" />
+                            </StackPanel>
+
+                            <TextBlock Classes="Caption" Text="Navigation Context" FontWeight="Bold" Margin="0,8,0,0" />
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="RadioButton.Nav.Item" FontSize="10" Foreground="Gray" />
+                                <RadioButton Classes="Nav Item" Content="Home" IsChecked="True" />
+                                <RadioButton Classes="Nav Item" Content="Settings" />
+                            </StackPanel>
+                        </StackPanel>
+                    </ThemeVariantScope>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Design.PreviewWith>
+</Styles>

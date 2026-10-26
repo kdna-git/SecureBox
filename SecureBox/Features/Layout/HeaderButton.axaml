@@ -1,0 +1,45 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--
+        Defines the appearance of buttons used in the application header.
+        The custom template provides a compact, borderless button while
+        preserving the button's background and content bindings.
+    -->
+    <Style Selector="Button.HeaderBtn">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource OnSurface}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Margin" Value="4" />
+        <Setter Property="FontWeight" Value="Medium" />
+
+        <!--
+            Replace the default button template with a simple bordered
+            container and centered content.
+        -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}" CornerRadius="2">
+                    <ContentPresenter
+                        Margin="{TemplateBinding Padding}"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="{TemplateBinding Content}"
+                        FontSize="12" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <!--
+        Ensures text content inside header buttons uses the same compact
+        typography and application surface color.
+    -->
+    <Style Selector="Button.HeaderBtn TextBlock">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Foreground" Value="{DynamicResource OnSurface}" />
+    </Style>
+</Styles>

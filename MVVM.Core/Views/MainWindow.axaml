@@ -1,0 +1,83 @@
+<Window
+    x:Class="MVVM.Core.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:ModalControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:MVVM.Core.ViewModels"
+    xmlns:views="using:MVVM.Core.Views"
+    MinWidth="650"
+    MinHeight="450"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="viewModels:MainViewModel"
+    Background="Transparent"
+    CanResize="True"
+    ExtendClientAreaTitleBarHeightHint="32"
+    ExtendClientAreaToDecorationsHint="False"
+    Icon="/Assets/avalonia-logo.ico"
+    PointerMoved="OnPointerMoved"
+    PointerPressed="OnPointerPressed"
+    WindowDecorations="None"
+    mc:Ignorable="d">
+
+    <Grid ColumnDefinitions="Auto,*" RowDefinitions="32,*">
+
+        <!-- Custom application header and window controls. -->
+        <Border
+            Name="HeaderBorder"
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            Background="{DynamicResource Background}"
+            PointerPressed="OnHeaderPointerPressed">
+            <ContentControl Content="{Binding HeaderViewModel}" />
+        </Border>
+
+        <!--
+            Navigation rail that expands on hover to reveal the full navigation area.
+            The width transition provides a smooth expand/collapse animation.
+        -->
+        <Border
+            Name="SidebarBorder"
+            Grid.Row="1"
+            Grid.Column="0"
+            HorizontalAlignment="Left"
+            Background="{DynamicResource Background}"
+            Classes="Nav Rail"
+            ClipToBounds="True">
+            <Border.Transitions>
+                <Transitions>
+                    <DoubleTransition Property="Width" Duration="0:0:0.2" />
+                </Transitions>
+            </Border.Transitions>
+            <ContentControl Content="{Binding NavigationBarViewModel}" />
+        </Border>
+
+        <!-- Main application content displayed by the navigation store. -->
+        <Border
+            Name="ContentBorder"
+            Grid.Row="1"
+            Grid.Column="1"
+            Background="{DynamicResource Surface}"
+            ClipToBounds="True">
+            <views:MainView />
+        </Border>
+
+        <!--
+            Modal overlay displayed above the main content.
+            Clicking the background invokes the close command while clicks
+            inside the modal content are handled by the Modal control itself.
+        -->
+        <controls:Modal
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            BackgroundClickCommand="{Binding CloseModalCommand}"
+            ContentCornerRadius="{DynamicResource DefaultCornerRadius}"
+            IsOpen="{Binding IsModalOpen}">
+            <ContentControl MinWidth="200" Content="{Binding CurrentModalViewModel}" />
+        </controls:Modal>
+
+    </Grid>
+
+</Window>

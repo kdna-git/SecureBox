@@ -1,0 +1,65 @@
+﻿<UserControl
+    x:Class="SecureBox.Views.HeaderView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:coreViewModels="clr-namespace:MVVM.Core.ViewModels;assembly=MVVM.Core"
+    x:DataType="coreViewModels:HeaderViewModel">
+
+    <!--
+        The header is divided into two columns:
+        - A flexible column for the application title.
+        - A fixed-width column for the window control buttons.
+    -->
+    <Grid ColumnDefinitions="*,100">
+
+        <!-- Application title. -->
+        <TextBlock
+            Grid.Column="0"
+            Margin="100,0,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Classes="Title"
+            FontWeight="Medium"
+            Foreground="{DynamicResource OnSurface}"
+            Text="{Binding Title}" />
+
+        <!--
+            Window control buttons are aligned to the right of the header.
+            Each command receives the parent Window as its parameter.
+        -->
+        <StackPanel
+            Grid.Column="1"
+            Margin="0,0,4,0"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+
+            <!-- Minimize window. -->
+            <Button
+                Padding="0,0,0,4"
+                Classes="HeaderBtn"
+                Command="{Binding MinimizeWindowCommand}"
+                CommandParameter="{Binding $parent[Window]}">
+                <TextBlock LineHeight="20" Text="&#x2014;" />
+            </Button>
+
+            <!-- Maximize or restore window. -->
+            <Button
+                Padding="0,0,0,5"
+                Classes="HeaderBtn"
+                Command="{Binding MaximizeWindowCommand}"
+                CommandParameter="{Binding $parent[Window]}">
+                <TextBlock LineHeight="18" Text="&#x1F5D6;" />
+            </Button>
+
+            <!-- Close the application window. -->
+            <Button
+                Padding="0,0,0,2"
+                Classes="HeaderBtn"
+                Command="{Binding ShutdownWindowCommand}"
+                CommandParameter="{Binding $parent[Window]}">
+                <TextBlock LineHeight="20" Text="&#x2715;" />
+            </Button>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

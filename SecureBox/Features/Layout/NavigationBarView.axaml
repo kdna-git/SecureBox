@@ -1,0 +1,94 @@
+﻿<UserControl
+    x:Class="SecureBox.Views.NavigationBarView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:extension="using:MVVM.Core.Extensions"
+    xmlns:viewModels="clr-namespace:SecureBox.ViewModels"
+    x:DataType="viewModels:NavigationBarViewModel">
+
+    <!--
+        Contains the navigation options displayed in the application's
+        navigation bar.
+    -->
+    <StackPanel>
+
+        <RadioButton
+            Margin="5"
+            Padding="7,4,5,5"
+            extension:ExtensionIcons.Icon="LockShield"
+            Classes="Nav Item"
+            Command="{Binding NavigateAllSecretsCommand}"
+            Content="All Secrets"
+            IsChecked="{Binding SecretsChecked, Mode=OneWay}"
+            IsVisible="{Binding IsLogged}" />
+
+        <RadioButton
+            Margin="5"
+            Padding="7,0,4,0"
+            extension:ExtensionIcons.Icon="Star"
+            Classes="Nav Item"
+            Command="{Binding NavigateFavoritesCommand}"
+            Content="Favorites"
+            IsChecked="{Binding FavoritesChecked, Mode=OneWay}"
+            IsVisible="{Binding IsLogged}" />
+
+        <!--        <RadioButton
+            Margin="5"
+            Padding="7,5,4,5"
+            extensions:Extensions.Icon="Clock"
+            Command="{Binding NavigateRecentsCommand}"
+            Content="Recent"
+            IsChecked="{Binding RecentsChecked, Mode=OneWay}"
+            Classes="Navigation"
+            IsVisible="{Binding IsLogged}" />-->
+
+        <RadioButton
+            Margin="5"
+            Padding="7,5,4,5"
+            extension:ExtensionIcons.Icon="Person"
+            Classes="Nav Item"
+            Command="{Binding NavigateLoginCommand}"
+            Content="Login"
+            IsChecked="{Binding LoginChecked, Mode=OneWay}"
+            IsVisible="{Binding !IsLogged}" />
+
+        <RadioButton
+            Margin="5"
+            Padding="7,5,4.5,5"
+            extension:ExtensionIcons.Icon="Add"
+            Classes="Nav Item"
+            Command="{Binding NavigateSignUpCommand}"
+            Content="Sign up"
+            IsChecked="{Binding SignUpChecked, Mode=OneWay}"
+            IsVisible="{Binding !IsLogged}" />
+
+        <!--        <RadioButton
+            Margin="5"
+            Padding="7,5,4.5,5"
+            extensions:Extensions.Icon="Mail"
+            Command="{Binding NavigateSafeChannel}"
+            Content="Safe channel"
+            IsChecked="{Binding SafeChannelChecked, Mode=OneWay}"
+            Classes="Navigation"
+            IsVisible="{Binding IsLogged}" />-->
+
+        <RadioButton
+            Margin="5"
+            Padding="8,5,3,5"
+            extension:ExtensionIcons.Icon="PersonDelete"
+            Classes="Nav Item"
+            Command="{Binding NavigateLogoutCommand}"
+            Content="Logout"
+            IsVisible="{Binding IsLogged}" />
+
+        <RadioButton
+            Margin="5"
+            Padding="7,5,4.5,5"
+            extension:ExtensionIcons.Icon="Settings"
+            Classes="Nav Item"
+            Command="{Binding NavigateSettingsCommand}"
+            Content="Settings"
+            IsChecked="{Binding SettingsChecked, Mode=OneWay}" />
+
+    </StackPanel>
+</UserControl>

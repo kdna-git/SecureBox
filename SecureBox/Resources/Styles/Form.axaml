@@ -1,0 +1,87 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+     <!--
+        Base styling for form action buttons.
+        Provides consistent alignment, sizing, template behavior, and interaction states.
+    -->
+    <Style Selector="Button.Form">
+        <Setter Property="Padding" Value="0,4" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+
+        <!-- Custom template used to apply the form button's content, border, and corner radius. -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    MinWidth="{TemplateBinding MinWidth}"
+                    Padding="{TemplateBinding Padding}"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{DynamicResource ContentCornerRadius}">
+                    <ContentPresenter
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Form button interaction states. -->
+        <Style Selector="^:pointerover">
+            <Setter Property="Opacity" Value="0.9" />
+        </Style>
+
+        <Style Selector="^:pressed">
+            <Setter Property="RenderTransform" Value="scale(0.95)" />
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="0.5" />
+        </Style>
+    </Style>
+
+    <!-- Primary action button used to submit a form. -->
+    <Style Selector="Button.Form.Submit">
+        <Setter Property="Background" Value="{DynamicResource Accent}" />
+        <Setter Property="Foreground" Value="{DynamicResource OnAccent}" />
+        <Setter Property="FontWeight" Value="{DynamicResource FontWeightMedium}" />
+        <Setter Property="BorderThickness" Value="0" />
+
+        <!-- Ensure button content uses the primary button foreground color. -->
+        <Style Selector="^ TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource OnAccent}" />
+        </Style>
+    </Style>
+
+    <!-- Secondary action button used to cancel a form. -->
+    <Style Selector="Button.Form.Cancel">
+        <Setter Property="Background" Value="{DynamicResource InverseSurface}" />
+        <Setter Property="Foreground" Value="{DynamicResource InverseOnSurface}" />
+        <Setter Property="BorderThickness" Value="0" />
+
+        <!-- Ensure button content uses the cancel button foreground color. -->
+        <Style Selector="^ TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource InverseOnSurface}" />
+        </Style>
+    </Style>
+
+    <!-- Form heading text style. -->
+    <Style Selector="TextBlock.Form.Heading">
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeH3}" />
+        <Setter Property="FontWeight" Value="{DynamicResource FontWeightBold}" />
+        <Setter Property="Foreground" Value="{DynamicResource OnBackground}" />
+    </Style>
+
+    <!-- Form field label text style. -->
+    <Style Selector="TextBlock.Form.Label">
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeCaption}" />
+        <Setter Property="Foreground" Value="{DynamicResource OnSurfaceVariant}" />
+    </Style>
+
+    <!-- Default minimum width for form input fields. -->
+    <Style Selector="TextBox.Form.Field">
+        <Setter Property="MinWidth" Value="200" />
+    </Style>
+</Styles>

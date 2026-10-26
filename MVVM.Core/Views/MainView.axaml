@@ -1,0 +1,15 @@
+<UserControl
+    x:Class="MVVM.Core.Views.MainView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:MVVM.Core.ViewModels"
+    x:DataType="vm:MainViewModel">
+
+    <!-- Provide a design-time ViewModel for previewing the view in the designer. -->
+    <Design.DataContext>
+        <vm:MainViewModel />
+    </Design.DataContext>
+
+    <!-- Display the view corresponding to the currently active ViewModel. -->
+    <ContentControl Content="{Binding CurrentViewModel}" />
+</UserControl>

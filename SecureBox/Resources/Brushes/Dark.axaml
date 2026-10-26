@@ -1,0 +1,223 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.PreviewWith>
+        <Border Width="420" Height="840" Background="{StaticResource Background}">
+            <ScrollViewer Padding="12">
+                <StackPanel Spacing="12">
+
+                    <TextBlock Text="Primary" FontSize="12" Foreground="{StaticResource OutlineVariant}" />
+                    <UniformGrid Columns="2" Rows="1">
+                        <Border Background="{StaticResource Primary}" CornerRadius="8" Padding="10" Margin="0,0,4,0">
+                            <StackPanel>
+                                <TextBlock Text="Primary" Foreground="{StaticResource OnPrimary}" FontWeight="Medium" />
+                                <TextBlock Text="#BAC4FF" Foreground="{StaticResource OnPrimary}" FontSize="11" Opacity="0.8" />
+                            </StackPanel>
+                        </Border>
+                        <Border Background="{StaticResource PrimaryContainer}" CornerRadius="8" Padding="10" Margin="4,0,0,0">
+                            <StackPanel>
+                                <TextBlock Text="PrimaryContainer" Foreground="{StaticResource OnPrimaryContainer}" FontWeight="Medium" TextWrapping="Wrap" />
+                                <TextBlock Text="#1A3B8C" Foreground="{StaticResource OnPrimaryContainer}" FontSize="11" Opacity="0.8" />
+                            </StackPanel>
+                        </Border>
+                    </UniformGrid>
+
+                    <TextBlock Text="Secondary" FontSize="12" Foreground="{StaticResource OutlineVariant}" />
+                    <UniformGrid Columns="2" Rows="1">
+                        <Border Background="{StaticResource Secondary}" CornerRadius="8" Padding="10" Margin="0,0,4,0">
+                            <StackPanel>
+                                <TextBlock Text="Secondary" Foreground="{StaticResource OnSecondary}" FontWeight="Medium" />
+                                <TextBlock Text="#C3C5DF" Foreground="{StaticResource OnSecondary}" FontSize="11" Opacity="0.8" />
+                            </StackPanel>
+                        </Border>
+                        <Border Background="{StaticResource SecondaryContainer}" CornerRadius="8" Padding="10" Margin="4,0,0,0">
+                            <StackPanel>
+                                <TextBlock Text="SecondaryContainer" Foreground="{StaticResource OnSecondaryContainer}" FontWeight="Medium" TextWrapping="Wrap" />
+                                <TextBlock Text="#434659" Foreground="{StaticResource OnSecondaryContainer}" FontSize="11" Opacity="0.8" />
+                            </StackPanel>
+                        </Border>
+                    </UniformGrid>
+
+                    <TextBlock Text="Tertiary" FontSize="12" Foreground="{StaticResource OutlineVariant}" />
+                    <UniformGrid Columns="2" Rows="1">
+                        <Border Background="{StaticResource Tertiary}" CornerRadius="8" Padding="10" Margin="0,0,4,0">
+                            <StackPanel>
+                                <TextBlock Text="Tertiary" Foreground="{StaticResource OnTertiary}" FontWeight="Medium" />
+                                <TextBlock Text="#FFE169" Foreground="{StaticResource OnTertiary}" FontSize="11" Opacity="0.8" />
+                            </StackPanel>
+                        </Border>
+                        <Border Background="{StaticResource TertiaryContainer}" CornerRadius="8" Padding="10" Margin="4,0,0,0">
+                            <StackPanel>
+                                <TextBlock Text="TertiaryContainer" Foreground="{StaticResource OnTertiaryContainer}" FontWeight="Medium" TextWrapping="Wrap" />
+                                <TextBlock Text="#5A5300" Foreground="{StaticResource OnTertiaryContainer}" FontSize="11" Opacity="0.8" />
+                            </StackPanel>
+                        </Border>
+                    </UniformGrid>
+
+                    <TextBlock Text="Error" FontSize="12" Foreground="{StaticResource OutlineVariant}" />
+                    <UniformGrid Columns="2" Rows="1">
+                        <Border Background="{StaticResource Error}" CornerRadius="8" Padding="10" Margin="0,0,4,0">
+                            <StackPanel>
+                                <TextBlock Text="Error" Foreground="{StaticResource OnError}" FontWeight="Medium" />
+                                <TextBlock Text="#FFB4AB" Foreground="{StaticResource OnError}" FontSize="11" Opacity="0.8" />
+                            </StackPanel>
+                        </Border>
+                        <Border Background="{StaticResource ErrorContainer}" CornerRadius="8" Padding="10" Margin="4,0,0,0">
+                            <StackPanel>
+                                <TextBlock Text="ErrorContainer" Foreground="{StaticResource OnErrorContainer}" FontWeight="Medium" TextWrapping="Wrap" />
+                                <TextBlock Text="#93000A" Foreground="{StaticResource OnErrorContainer}" FontSize="11" Opacity="0.8" />
+                            </StackPanel>
+                        </Border>
+                    </UniformGrid>
+
+                    <TextBlock Text="Surface" FontSize="12" Foreground="{StaticResource OutlineVariant}" />
+                    <UniformGrid Columns="2" Rows="1">
+                        <Border Background="{StaticResource Surface}" BorderBrush="{StaticResource Outline}" BorderThickness="1" CornerRadius="8" Padding="10" Margin="0,0,4,0">
+                            <StackPanel>
+                                <TextBlock Text="Surface" Foreground="{StaticResource OnSurface}" FontWeight="Medium" />
+                                <TextBlock Text="#252525" Foreground="{StaticResource OnSurface}" FontSize="11" Opacity="0.8" />
+                            </StackPanel>
+                        </Border>
+                        <Border Background="{StaticResource SurfaceVariant}" BorderBrush="{StaticResource Outline}" BorderThickness="1" CornerRadius="8" Padding="10" Margin="4,0,0,0">
+                            <StackPanel>
+                                <TextBlock Text="SurfaceVariant" Foreground="{StaticResource OnSurfaceVariant}" FontWeight="Medium" />
+                                <TextBlock Text="#1A1A1A" Foreground="{StaticResource OnSurfaceVariant}" FontSize="11" Opacity="0.8" />
+                            </StackPanel>
+                        </Border>
+                    </UniformGrid>
+
+                    <TextBlock Text="Background" FontSize="12" Foreground="{StaticResource OutlineVariant}" />
+                    <Border Background="{StaticResource Background}" BorderBrush="{StaticResource Outline}" BorderThickness="1" CornerRadius="8" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="Background" Foreground="{StaticResource OnBackground}" FontWeight="Medium" />
+                            <TextBlock Text="#111111" Foreground="{StaticResource OnBackground}" FontSize="11" Opacity="0.8" />
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="Outline" FontSize="12" Foreground="{StaticResource OutlineVariant}" />
+                    <UniformGrid Columns="2" Rows="1">
+                        <Border Background="{StaticResource Outline}" CornerRadius="8" Padding="10" Margin="0,0,4,0">
+                            <TextBlock Text="Outline" Foreground="{StaticResource OnSurface}" FontWeight="Medium" />
+                        </Border>
+                        <Border Background="{StaticResource OutlineVariant}" CornerRadius="8" Padding="10" Margin="4,0,0,0">
+                            <TextBlock Text="OutlineVariant" Foreground="{StaticResource OnSurface}" FontWeight="Medium" />
+                        </Border>
+                    </UniformGrid>
+
+                    <TextBlock Text="Inverse" FontSize="12" Foreground="{StaticResource OutlineVariant}" />
+                    <UniformGrid Columns="2" Rows="1">
+                        <Border Background="{StaticResource InverseSurface}" CornerRadius="8" Padding="10" Margin="0,0,4,0">
+                            <StackPanel>
+                                <TextBlock Text="InverseSurface" Foreground="{StaticResource InverseOnSurface}" FontWeight="Medium" />
+                                <TextBlock Text="#E3E2E9" Foreground="{StaticResource InverseOnSurface}" FontSize="11" Opacity="0.8" />
+                            </StackPanel>
+                        </Border>
+                        <Border Background="{StaticResource InversePrimary}" CornerRadius="8" Padding="10" Margin="4,0,0,0">
+                            <TextBlock Text="InversePrimary" Foreground="White" FontWeight="Medium" TextWrapping="Wrap" />
+                        </Border>
+                    </UniformGrid>
+
+                    <TextBlock Text="Success" FontSize="12" Foreground="{StaticResource OutlineVariant}" />
+                    <Border Background="{StaticResource Success}" CornerRadius="8" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="Success" Foreground="{StaticResource OnSuccess}" FontWeight="Medium" />
+                            <TextBlock Text="#4CAF50" Foreground="{StaticResource OnSuccess}" FontSize="11" Opacity="0.8" />
+                        </StackPanel>
+                    </Border>
+
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Design.PreviewWith>
+
+    <!--  Primary colors and their corresponding foreground/content colors.  -->
+    <Color x:Key="PrimaryColor">#BAC4FF</Color>
+    <SolidColorBrush x:Key="Primary" Color="#BAC4FF" />
+    <Color x:Key="OnPrimaryColor">#002060</Color>
+    <SolidColorBrush x:Key="OnPrimary" Color="#002060" />
+    <Color x:Key="PrimaryContainerColor">#1A3B8C</Color>
+    <SolidColorBrush x:Key="PrimaryContainer" Color="#1A3B8C" />
+    <Color x:Key="OnPrimaryContainerColor">#DEE0FF</Color>
+    <SolidColorBrush x:Key="OnPrimaryContainer" Color="#DEE0FF" />
+
+    <!--
+        Accent used to fill buttons and selected states. It is the same dark blue
+        as the selected item of the navigation bar.
+    -->
+    <Color x:Key="AccentColor">#1A3B8C</Color>
+    <SolidColorBrush x:Key="Accent" Color="#1A3B8C" />
+    <Color x:Key="OnAccentColor">#DEE0FF</Color>
+    <SolidColorBrush x:Key="OnAccent" Color="#DEE0FF" />
+
+    <!--  Neutral grays for the tabs, so that only actions use the accent  -->
+    <SolidColorBrush x:Key="SelectedTab" Color="#161616" />
+    <SolidColorBrush x:Key="TabHover" Color="#303030" />
+
+    <!--  Secondary colors and their corresponding foreground/content colors.  -->
+    <Color x:Key="SecondaryColor">#C3C5DF</Color>
+    <SolidColorBrush x:Key="Secondary" Color="#C3C5DF" />
+    <Color x:Key="OnSecondaryColor">#2D2F43</Color>
+    <SolidColorBrush x:Key="OnSecondary" Color="#2D2F43" />
+    <Color x:Key="SecondaryContainerColor">#434659</Color>
+    <SolidColorBrush x:Key="SecondaryContainer" Color="#434659" />
+    <Color x:Key="OnSecondaryContainerColor">#DFE0F9</Color>
+    <SolidColorBrush x:Key="OnSecondaryContainer" Color="#DFE0F9" />
+
+    <!--  Tertiary colors and their corresponding foreground/content colors.  -->
+    <Color x:Key="TertiaryColor">#FFE169</Color>
+    <SolidColorBrush x:Key="Tertiary" Color="#FFE169" />
+    <Color x:Key="OnTertiaryColor">#2E2900</Color>
+    <SolidColorBrush x:Key="OnTertiary" Color="#2E2900" />
+    <Color x:Key="TertiaryContainerColor">#5A5300</Color>
+    <SolidColorBrush x:Key="TertiaryContainer" Color="#5A5300" />
+    <Color x:Key="OnTertiaryContainerColor">#FFF8C4</Color>
+    <SolidColorBrush x:Key="OnTertiaryContainer" Color="#FFF8C4" />
+
+    <!--  Error colors and their corresponding foreground/content colors.  -->
+    <Color x:Key="ErrorColor">#FFB4AB</Color>
+    <SolidColorBrush x:Key="Error" Color="#FFB4AB" />
+    <Color x:Key="OnErrorColor">#690005</Color>
+    <SolidColorBrush x:Key="OnError" Color="#690005" />
+    <Color x:Key="ErrorContainerColor">#93000A</Color>
+    <SolidColorBrush x:Key="ErrorContainer" Color="#93000A" />
+    <Color x:Key="OnErrorContainerColor">#FFDAD6</Color>
+    <SolidColorBrush x:Key="OnErrorContainer" Color="#FFDAD6" />
+
+    <!--  Surface colors used for application components and containers.  -->
+    <Color x:Key="SurfaceColor">#252525</Color>
+    <SolidColorBrush x:Key="Surface" Color="#252525" />
+    <Color x:Key="OnSurfaceColor">#E9E9E9</Color>
+    <SolidColorBrush x:Key="OnSurface" Color="#E9E9E9" />
+    <Color x:Key="SurfaceVariantColor">#1A1A1A</Color>
+    <SolidColorBrush x:Key="SurfaceVariant" Color="#1A1A1A" />
+    <Color x:Key="OnSurfaceVariantColor">#E9E9E9</Color>
+    <SolidColorBrush x:Key="OnSurfaceVariant" Color="#E9E9E9" />
+
+    <!--  Background colors used for the main application surface.  -->
+    <Color x:Key="BackgroundColor">#111111</Color>
+    <SolidColorBrush x:Key="Background" Color="#111111" />
+    <Color x:Key="OnBackgroundColor">#E3E2E9</Color>
+    <SolidColorBrush x:Key="OnBackground" Color="#E3E2E9" />
+
+    <!--  Outline colors used for borders, dividers, and secondary visual elements.  -->
+    <Color x:Key="OutlineColor">#8D9199</Color>
+    <SolidColorBrush x:Key="Outline" Color="#8D9199" />
+    <Color x:Key="OutlineVariantColor">#43474E</Color>
+    <SolidColorBrush x:Key="OutlineVariant" Color="#43474E" />
+
+    <!--  Inverse colors used when content is displayed against an inverted surface.  -->
+    <Color x:Key="InverseSurfaceColor">#E3E2E9</Color>
+    <SolidColorBrush x:Key="InverseSurface" Color="#E3E2E9" />
+    <Color x:Key="InverseOnSurfaceColor">#303036</Color>
+    <SolidColorBrush x:Key="InverseOnSurface" Color="#303036" />
+    <Color x:Key="InversePrimaryColor">#5360ED</Color>
+    <SolidColorBrush x:Key="InversePrimary" Color="#5360ED" />
+
+    <!--  Colors used for surface elevation and tonal overlays.  -->
+    <SolidColorBrush x:Key="SurfaceTint" Color="#BAC4FF" />
+
+    <!--  Additional semantic colors not covered by the standard theme palette.  -->
+    <Color x:Key="SuccessColor">#4CAF50</Color>
+    <SolidColorBrush x:Key="Success" Color="#4CAF50" />
+    <Color x:Key="OnSuccessColor">#E8F5E9</Color>
+    <SolidColorBrush x:Key="OnSuccess" Color="#E8F5E9" />
+</ResourceDictionary>

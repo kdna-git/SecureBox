@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="DTOs\" />
+    <Folder Include="Queries\" />
+  </ItemGroup>
+</Project>

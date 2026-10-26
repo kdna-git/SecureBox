@@ -1,0 +1,18 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Styles.Resources>
+
+        <!-- Standard font formats used throughout the application. -->
+        <FontWeight x:Key="FontWeightLight">300</FontWeight>
+        <FontWeight x:Key="FontWeightRegular">400</FontWeight>
+        <FontWeight x:Key="FontWeightMedium">500</FontWeight>
+        <FontWeight x:Key="FontWeightSemiBold">600</FontWeight>
+        <FontWeight x:Key="FontWeightBold">700</FontWeight>
+        <x:Double x:Key="FontSizeH1">32</x:Double>
+        <x:Double x:Key="FontSizeH2">28</x:Double>
+        <x:Double x:Key="FontSizeH3">24</x:Double>
+        <x:Double x:Key="FontSizeH4">20</x:Double>
+        <x:Double x:Key="FontSizeBody">16</x:Double>
+        <x:Double x:Key="FontSizeCaption">12</x:Double>
+
+    </Styles.Resources>
+</Styles>

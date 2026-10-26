@@ -1,0 +1,62 @@
+﻿<Application
+    x:Class="SecureBox.App"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SecureBox"
+    RequestedThemeVariant="Default">
+
+    <Application.DataTemplates>
+        <local:ViewLocator />
+    </Application.DataTemplates>
+
+    <Application.Styles>
+        <!--  Fluent controls use the accent of the application instead of their light blue  -->
+        <FluentTheme>
+            <FluentTheme.Palettes>
+                <ColorPaletteResources x:Key="Dark" Accent="#1A3B8C" />
+                <ColorPaletteResources x:Key="Light" Accent="#3B48C9" />
+            </FluentTheme.Palettes>
+        </FluentTheme>
+
+        <!--  Shared properties that are independent of the selected theme.  -->
+        <StyleInclude Source="avares://SecureBox/Resources/Properties/CornerRadius.axaml" />
+        <StyleInclude Source="avares://SecureBox/Resources/Properties/Thickness.axaml" />
+        <StyleInclude Source="avares://SecureBox/Resources/Properties/Typography.axaml" />
+
+        <!--  Global control and component styles.  -->
+        <StyleInclude Source="avares://SecureBox/Resources/Styles/Controls.axaml" />
+        <StyleInclude Source="avares://SecureBox/Resources/Styles/Form.axaml" />
+        <StyleInclude Source="avares://SecureBox/Resources/Styles/Navigation.axaml" />
+        <StyleInclude Source="avares://SecureBox/Resources/Styles/Tabs.axaml" />
+        <StyleInclude Source="avares://SecureBox/Resources/Styles/Dialog.axaml" />
+
+        <!--  Styles specific to individual application features.  -->
+        <StyleInclude Source="avares://SecureBox/Features/Layout/HeaderButton.axaml" />
+    </Application.Styles>
+
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <!-- Theme-specific color and brush resources. -->
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceInclude Source="avares://SecureBox/Resources/Brushes/Light.axaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceInclude Source="avares://SecureBox/Resources/Brushes/Dark.axaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+
+            <!-- Controls library resources. -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://ModalControl/Themes/Generic.axaml" />
+                <ResourceInclude Source="avares://SecureBox/Shared/Components/FileIcon/Themes/Generic.axaml" />
+                <ResourceInclude Source="avares://SecureBox/Shared/Components/TreeViewControl/Themes/Generic.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

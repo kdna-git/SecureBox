@@ -1,0 +1,36 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SecureBox.Components.TreeViewControl">
+
+    <!--  Geometries  -->
+    <StreamGeometry x:Key="ChevronRight">M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z</StreamGeometry>
+    <StreamGeometry x:Key="ChevronDown">M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z</StreamGeometry>
+
+    <!--  ChevronSwitch style  -->
+    <ControlTheme x:Key="{x:Type local:ChevronSwitch}" TargetType="local:ChevronSwitch">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Cursor" Value="Hand" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
+                    <Path
+                        x:Name="Chevron"
+                        Width="10"
+                        Height="10"
+                        Data="{StaticResource ChevronRight}"
+                        Fill="{TemplateBinding ChevronColor}"
+                        Stretch="Uniform" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:checked /template/ Path#Chevron">
+            <Setter Property="Data" Value="{StaticResource ChevronDown}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

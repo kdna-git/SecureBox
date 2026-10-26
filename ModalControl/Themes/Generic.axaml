@@ -1,0 +1,48 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ModalControl">
+
+    <!--
+        Default control theme for the Modal control.
+        Provides the overlay appearance and centered modal content layout.
+    -->
+    <ControlTheme x:Key="{x:Type local:Modal}" TargetType="local:Modal">
+
+        <!-- Semi-transparent overlay displayed behind the modal content. -->
+        <Setter Property="Background" Value="#4D000000" />
+
+        <Setter Property="Template">
+            <ControlTemplate TargetType="local:Modal">
+                <!--
+                    Full-screen overlay. Visibility is controlled by the
+                    Modal.IsOpen property through the template binding.
+                -->
+                <Grid
+                    x:Name="PART_BackgroundGrid"
+                    Background="{TemplateBinding Background}"
+                    IsVisible="{TemplateBinding IsOpen}">
+
+                    <!--
+                        Centers the modal content within the overlay and
+                        applies the configured content appearance.
+                    -->
+                    <Border
+                        x:Name="PART_ModalContent"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Background="{TemplateBinding ContentBackground}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        BoxShadow="5 5 10 2 #40808080"
+                        ClipToBounds="True"
+                        CornerRadius="{TemplateBinding ContentCornerRadius}">
+
+                        <!-- BoxShadow replaces the former DropShadowEffect. -->
+                        <ContentPresenter Content="{TemplateBinding Content}" />
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

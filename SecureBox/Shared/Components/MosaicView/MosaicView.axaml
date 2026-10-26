@@ -1,0 +1,133 @@
+﻿<UserControl
+    x:Class="SecureBox.Views.Components.MosaicView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:breadCrumb="using:SecureBox.Components"
+    xmlns:fileIcon="using:SecureBox.Components.FileIcon"
+    xmlns:ic="using:FluentIcons.Avalonia"
+    xmlns:viewModels="using:SecureBox.ViewModels"
+    x:DataType="viewModels:ItemsViewModel">
+
+    <UserControl.Styles>
+        <!--  Each item is drawn as a card  -->
+        <Style Selector="ListBox.Mosaic">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+        </Style>
+        <Style x:DataType="viewModels:FileItemViewModel" Selector="ListBox.Mosaic ListBoxItem">
+            <Setter Property="IsVisible" Value="{Binding IsVisible}" />
+            <Setter Property="Margin" Value="4" />
+            <Setter Property="Padding" Value="8,6" />
+            <Setter Property="CornerRadius" Value="{DynamicResource CardCornerRadius}" />
+            <Setter Property="Background" Value="{DynamicResource SurfaceVariant}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource OutlineVariant}" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+        <Style Selector="ListBox.Mosaic ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource PrimaryContainer}" />
+        </Style>
+        <Style Selector="ListBox.Mosaic ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SecondaryContainer}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Primary}" />
+        </Style>
+
+        <Style Selector="TextBlock.Section">
+            <Setter Property="Margin" Value="4,12,0,4" />
+            <Setter Property="FontWeight" Value="{DynamicResource FontWeightSemiBold}" />
+            <Setter Property="Foreground" Value="{DynamicResource OnSurfaceVariant}" />
+        </Style>
+
+        <!--  Favorite button without the default button chrome  -->
+        <Style Selector="Button.Star">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="2" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Foreground" Value="{DynamicResource Primary}" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <ContentPresenter
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}"
+                        Content="{TemplateBinding Content}" />
+                </ControlTemplate>
+            </Setter>
+        </Style>
+        <Style Selector="Button.Star.Favorite ic|SymbolIcon">
+            <Setter Property="IconVariant" Value="Filled" />
+        </Style>
+    </UserControl.Styles>
+
+    <UserControl.DataTemplates>
+        <DataTemplate DataType="viewModels:FileItemViewModel">
+            <Grid ColumnDefinitions="Auto,*,Auto" ToolTip.Tip="{Binding Name}">
+                <fileIcon:FileIcon
+                    Grid.Column="0"
+                    Margin="0,0,8,0"
+                    VerticalAlignment="Center"
+                    Extension="{Binding Extension}"
+                    Type="{Binding Type}" />
+                <TextBlock
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    Text="{Binding Name}"
+                    TextTrimming="CharacterEllipsis" />
+                <Button
+                    Grid.Column="2"
+                    Margin="4,0,0,0"
+                    VerticalAlignment="Center"
+                    Classes="Star"
+                    Classes.Favorite="{Binding IsFavorite}"
+                    Command="{Binding FavoriteCommand}"
+                    ToolTip.Tip="Favorite">
+                    <ic:SymbolIcon
+                        FontSize="16"
+                        Symbol="Star" />
+                </Button>
+            </Grid>
+        </DataTemplate>
+    </UserControl.DataTemplates>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="12,0,12,12">
+            <breadCrumb:BreadCrumComponent />
+
+            <TextBlock
+                Classes="Section"
+                IsVisible="{Binding HasDirectories}"
+                Text="Folders" />
+            <ListBox
+                x:Name="DirectoriesList"
+                Classes="Mosaic"
+                DoubleTapped="OnItemDoubleTapped"
+                ItemsSource="{Binding Directories}"
+                SelectionChanged="OnSelectionChanged">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="{Binding MosaicColumns}" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+
+            <TextBlock
+                Classes="Section"
+                IsVisible="{Binding HasFiles}"
+                Text="Files" />
+            <ListBox
+                x:Name="FilesList"
+                Classes="Mosaic"
+                DoubleTapped="OnItemDoubleTapped"
+                ItemsSource="{Binding Files}"
+                SelectionChanged="OnSelectionChanged">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="{Binding MosaicColumns}" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
