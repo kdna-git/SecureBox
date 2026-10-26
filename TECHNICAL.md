@@ -108,9 +108,26 @@ Firestore REST API.
 - `CloudSyncService` uploads every file of the user folder and downloads into it; nothing is ever
   decrypted or deleted. `CloudPaths.ToUserRelativePath` rejects paths of another user, `.`/`..`
   and invalid characters, and `SecureBoxStore.WriteFile` refuses anything outside the user folder.
-- `FirebaseConfig` holds the web API key, auth domain and project ID. A Firebase web API key is
-  meant to ship with the client; access is enforced by the Firestore security rules, which must
-  restrict `users/{uid}` to that user.
+- Firestore security rules must restrict `users/{uid}` to that user. A Firebase web API key is
+  meant to ship with the client, so the rules (and the key's API restrictions in Google Cloud) are
+  what protect the data, not the key being hidden.
+
+### Firebase settings
+
+The Firebase project is not in source control. `FirebaseConfig` reads `SecureBox/firebase.json`,
+which `SecureBox.csproj` embeds into the assembly when the file exists, so it reaches every head
+(desktop, Android, iOS, browser) without a runtime file. It is listed in `.gitignore`.
+
+To set it up, copy the template and fill in the values from Firebase console → Project settings →
+General:
+
+```bash
+cp SecureBox/firebase.example.json SecureBox/firebase.json
+```
+
+Without the file the app builds and runs normally; signing in to the cloud shows "The cloud is not
+configured in this build". To rotate the key, create a new one in Google Cloud Console → APIs &
+Services → Credentials, put it in `firebase.json`, rebuild, then delete the old key.
 
 ## Navigation and DI
 

@@ -1,13 +1,48 @@
+using System.Reflection;
+using System.Text.Json;
+
 namespace SecureBox.Services.Cloud;
 
 /// <summary>
 /// Settings of the Firebase project used for the cloud copy of the vault.
-/// The API key of a Firebase web app identifies the project and is meant to be
-/// shipped with the client, access to the data is enforced by the security rules.
+/// They are read from <c>firebase.json</c>, which is embedded in the assembly at
+/// build time and kept out of source control. Copy <c>firebase.example.json</c>
+/// to <c>firebase.json</c> and fill it in to enable the cloud. Without it the
+/// application works normally and the cloud reports that it is not configured.
 /// </summary>
-internal static class FirebaseConfig
+internal sealed class FirebaseConfig
 {
-    public const string ApiKey = "REDACTED-FIREBASE-API-KEY";
-    public const string AuthDomain = "box-f3ad8.firebaseapp.com";
-    public const string ProjectId = "box-f3ad8";
+    // Logical name given to the embedded file in SecureBox.csproj
+    private const string ResourceName = "SecureBox.firebase.json";
+
+    private static readonly Lazy<FirebaseConfig> _instance = new(Load);
+
+    public static FirebaseConfig Instance => _instance.Value;
+
+    public string ApiKey { get; init; } = string.Empty;
+    public string AuthDomain { get; init; } = string.Empty;
+    public string ProjectId { get; init; } = string.Empty;
+
+    public bool IsConfigured =>
+        !string.IsNullOrWhiteSpace(ApiKey)
+        && !string.IsNullOrWhiteSpace(AuthDomain)
+        && !string.IsNullOrWhiteSpace(ProjectId);
+
+    private static FirebaseConfig Load()
+    {
+        try
+        {
+            using Stream? stream = Assembly
+                .GetExecutingAssembly()
+                .GetManifestResourceStream(ResourceName);
+
+            if (stream is not null)
+                return JsonSerializer.Deserialize<FirebaseConfig>(
+                        stream,
+                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+                    ) ?? new FirebaseConfig();
+        }
+        catch (JsonException) { }
+        return new FirebaseConfig();
+    }
 }

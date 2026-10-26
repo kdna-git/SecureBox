@@ -81,6 +81,10 @@ files that are already compressed, such as photos or ZIP files.
 The cloud copy is optional and off until you sign in to a cloud account in **Settings**. This
 account is separate from your SecureBox user: it is an email and password used only for the cloud.
 
+> [!NOTE]
+> If you build SecureBox yourself, the cloud needs your own Firebase project. See *Firebase
+> settings* in [TECHNICAL.md](TECHNICAL.md). Without it, everything else works.
+
 Once signed in, the toolbar on the **Secrets** screen has three buttons:
 
 | Button | What it does |

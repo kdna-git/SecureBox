@@ -48,16 +48,32 @@ public sealed class FirebaseCloudService : ICloudService
 
     private static readonly HttpClient Http = new();
 
-    private readonly FirebaseAuthClient _auth = new(
-        new FirebaseAuthConfig
-        {
-            ApiKey = FirebaseConfig.ApiKey,
-            AuthDomain = FirebaseConfig.AuthDomain,
-            Providers = [new EmailProvider()],
-        }
-    );
+    private readonly FirebaseConfig _config = FirebaseConfig.Instance;
+
+    // Created on first use, so that the service can be built without a Firebase project
+    private FirebaseAuthClient? _auth;
 
     private User? _user;
+
+    private FirebaseAuthClient Auth
+    {
+        get
+        {
+            if (!_config.IsConfigured)
+                throw new CloudException(
+                    "The cloud is not configured in this build (firebase.json is missing)."
+                );
+
+            return _auth ??= new(
+                new FirebaseAuthConfig
+                {
+                    ApiKey = _config.ApiKey,
+                    AuthDomain = _config.AuthDomain,
+                    Providers = [new EmailProvider()],
+                }
+            );
+        }
+    }
 
     public bool IsSignedIn => _user is not null;
     public string? Email => _user?.Info.Email;
@@ -69,7 +85,7 @@ public sealed class FirebaseCloudService : ICloudService
     public async Task SignInAsync(string email, string password)
     {
         var credential = await Authenticate(() =>
-            _auth.SignInWithEmailAndPasswordAsync(email, password)
+            Auth.SignInWithEmailAndPasswordAsync(email, password)
         );
         SetUser(credential.User);
     }
@@ -77,14 +93,14 @@ public sealed class FirebaseCloudService : ICloudService
     public async Task SignUpAsync(string email, string password)
     {
         var credential = await Authenticate(() =>
-            _auth.CreateUserWithEmailAndPasswordAsync(email, password)
+            Auth.CreateUserWithEmailAndPasswordAsync(email, password)
         );
         SetUser(credential.User);
     }
 
     public void SignOut()
     {
-        _auth.SignOut();
+        _auth?.SignOut();
         SetUser(null);
     }
 
@@ -203,7 +219,7 @@ public sealed class FirebaseCloudService : ICloudService
     {
         string uid = _user?.Uid ?? throw new CloudException("Sign in to the cloud first.");
 
-        return $"https://firestore.googleapis.com/v1/projects/{FirebaseConfig.ProjectId}"
+        return $"https://firestore.googleapis.com/v1/projects/{_config.ProjectId}"
             + $"/databases/(default)/documents/users/{Uri.EscapeDataString(uid)}"
             + $"/{Uri.EscapeDataString(collection)}";
     }

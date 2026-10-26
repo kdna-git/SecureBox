@@ -1,0 +1,5 @@
+{
+  "apiKey": "<web API key from Firebase console > Project settings > General>",
+  "authDomain": "<project-id>.firebaseapp.com",
+  "projectId": "<project-id>"
+}

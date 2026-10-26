@@ -7,6 +7,11 @@
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
 
+  <!-- Firebase settings, kept out of source control. See firebase.example.json -->
+  <ItemGroup Condition="Exists('firebase.json')">
+    <EmbeddedResource Include="firebase.json" LogicalName="SecureBox.firebase.json" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Avalonia" />
     <PackageReference Include="Avalonia.Themes.Fluent" />
