@@ -16,7 +16,7 @@
     CanResize="True"
     ExtendClientAreaTitleBarHeightHint="32"
     ExtendClientAreaToDecorationsHint="False"
-    Icon="/Assets/avalonia-logo.ico"
+    Icon="/Assets/securebox.ico"
     PointerMoved="OnPointerMoved"
     PointerPressed="OnPointerPressed"
     WindowDecorations="None"

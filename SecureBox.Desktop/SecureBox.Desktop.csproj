@@ -5,6 +5,7 @@
 
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>..\MVVM.Core\Assets\securebox.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
