@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-using Microsoft.Extensions.Logging;
 using MVVM.Core.Services;
 using MVVM.Core.Stores;
 using MVVM.Core.ViewModels;
